@@ -202,6 +202,17 @@ body{
     text-decoration:none;
 
 }
+#clock{
+
+    text-align:center;
+    font-size:24px;
+    font-weight:bold;
+    background:white;
+    margin:10px 20px;
+    padding:10px;
+    border:2px solid #999;
+
+}
 
 </style>
 
@@ -216,6 +227,14 @@ body{
 MILK TEA AUTOMATION SYSTEM
 
 </div>
+
+<div id="clock">
+
+TIME : --:--:--
+
+</div>
+
+<div class="status-row">
 
 <div class="status-row">
 
@@ -419,11 +438,27 @@ function clearSelection(id50,id100){
 
 function setTea(value){
 
+    if(run_status){
+
+        alert("⚠ RECIPE CANNOT BE CHANGED WHILE SYSTEM IS RUNNING");
+
+        return;
+
+    }
+
     socket.emit("setTea", value);
 
 }
 
 function setMilk(value){
+
+    if(run_status){
+
+        alert("⚠ RECIPE CANNOT BE CHANGED WHILE SYSTEM IS RUNNING");
+
+        return;
+
+    }
 
     socket.emit("setMilk", value);
 
@@ -431,11 +466,27 @@ function setMilk(value){
 
 function setSugar(value){
 
+    if(run_status){
+
+        alert("⚠ RECIPE CANNOT BE CHANGED WHILE SYSTEM IS RUNNING");
+
+        return;
+
+    }
+
     socket.emit("setSugar", value);
 
 }
 
 function setIce(value){
+
+    if(run_status){
+
+        alert("⚠ RECIPE CANNOT BE CHANGED WHILE SYSTEM IS RUNNING");
+
+        return;
+
+    }
 
     socket.emit("setIce", value);
 
@@ -533,6 +584,15 @@ updateRequirement();
 
 });
 
+setInterval(()=>{
+
+    const now = new Date();
+
+    document.getElementById("clock").innerHTML =
+
+    "TIME : " + now.toLocaleString();
+
+},1000);
 updateRequirement();
 
 </script>
