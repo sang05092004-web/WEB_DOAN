@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>Milk Tea Automation System</title>
+
+<style>
+
+body{
+    font-family:Arial, sans-serif;
+    background:#d3d3d3;
+    margin:0;
+}
+
+.container{
+    width:1100px;
+    margin:20px auto;
+    background:#efefef;
+    border:2px solid #888;
+}
+
+.header{
+    background:#666;
+    color:white;
+    text-align:center;
+    font-size:32px;
+    font-weight:bold;
+    padding:20px;
+}
+
+.status-row{
+    display:flex;
+    margin:20px;
+}
+
+.status-box{
+    flex:1;
+    border:1px solid #999;
+    background:white;
+    text-align:center;
+    padding:20px;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.run{
+    color:green;
+}
+
+.fault{
+    color:red;
+}
+
+.auto{
+    color:blue;
+}
+
+.panel{
+
+    margin:20px;
+    background:white;
+    border:2px solid #999;
+    padding:20px;
+
+}
+
+.panel-title{
+
+    text-align:center;
+    font-size:30px;
+    font-weight:bold;
+    margin-bottom:20px;
+
+}
+
+.total-product{
+
+    text-align:center;
+    font-size:40px;
+    color:black;
+
+}
+
+.recipe-row{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:15px 0;
+
+}
+
+.recipe-name{
+
+    width:200px;
+    font-size:28px;
+    font-weight:bold;
+
+}
+
+.recipe-buttons{
+
+    width:400px;
+
+}
+
+.percent-btn{
+
+    width:120px;
+    height:50px;
+    font-size:20px;
+    font-weight:bold;
+    margin-right:10px;
+    cursor:pointer;
+    border:2px solid black;
+    background:#dddddd;
+
+}
+
+.selected{
+
+    background:#00ff00;
+
+}
+
+.requirement-text{
+
+    text-align:center;
+    font-size:28px;
+    color:blue;
+    font-weight:bold;
+    line-height:60px;
+
+}
+
+.control-panel{
+
+    text-align:center;
+
+}
+
+.auto-btn{
+
+    width:220px;
+    height:60px;
+    font-size:24px;
+    font-weight:bold;
+    margin:10px;
+    border:2px solid black;
+    cursor:pointer;
+
+}
+
+.start{
+
+    width:160px;
+    height:60px;
+    background:#00ff00;
+    font-size:24px;
+    font-weight:bold;
+    margin:10px;
+    cursor:pointer;
+
+}
+
+.stop{
+
+    width:160px;
+    height:60px;
+    background:yellow;
+    font-size:24px;
+    font-weight:bold;
+    margin:10px;
+    cursor:pointer;
+
+}
+
+.reset{
+
+    width:160px;
+    height:60px;
+    background:red;
+    color:white;
+    font-size:24px;
+    font-weight:bold;
+    margin:10px;
+    cursor:pointer;
+
+}
+
+.monitor{
+
+    text-align:center;
+    margin:40px;
+
+}
+
+.monitor a{
+
+    font-size:28px;
+    text-decoration:none;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+
+MILK TEA AUTOMATION SYSTEM
+
+</div>
+
+<div class="status-row">
+
+<div class="status-box run" id="runLamp">
+
+⚪ SYSTEM RUN
+
+</div>
+
+<div class="status-box fault" id="faultLamp">
+
+⚪ SYSTEM FAULT
+
+</div>
+
+<div class="status-box auto" id="autoLamp">
+
+⚪ AUTO STATUS
+
+</div>
+
+</div>
+
+<div class="panel">
+
+<div class="panel-title">
+
+TOTAL PRODUCT
+
+</div>
+
+<div class="total-product">
+
+<span id="totalProduct">120</span>
+
+</div>
+
+</div>
+
+<div class="panel">
+
+<div class="panel-title">
+
+RECIPE SELECTION
+
+</div>
+
+<div class="recipe-row">
+
+<div class="recipe-name">TEA</div>
+
+<div class="recipe-buttons">
+
+<button id="tea50" class="percent-btn" onclick="setTea('50')">50%</button>
+
+<button id="tea100" class="percent-btn selected" onclick="setTea('100')">100%</button>
+
+</div>
+
+</div>
+
+<div class="recipe-row">
+
+<div class="recipe-name">MILK</div>
+
+<div class="recipe-buttons">
+
+<button id="milk50" class="percent-btn" onclick="setMilk('50')">50%</button>
+
+<button id="milk100" class="percent-btn selected" onclick="setMilk('100')">100%</button>
+
+</div>
+
+</div>
+
+<div class="recipe-row">
+
+<div class="recipe-name">SUGAR</div>
+
+<div class="recipe-buttons">
+
+<button id="sugar50" class="percent-btn" onclick="setSugar('50')">50%</button>
+
+<button id="sugar100" class="percent-btn selected" onclick="setSugar('100')">100%</button>
+
+</div>
+
+</div>
+
+<div class="recipe-row">
+
+<div class="recipe-name">ICE</div>
+
+<div class="recipe-buttons">
+
+<button id="ice50" class="percent-btn" onclick="setIce('50')">50%</button>
+
+<button id="ice100" class="percent-btn selected" onclick="setIce('100')">100%</button>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="panel">
+
+<div class="panel-title">
+
+REQUIREMENT
+
+</div>
+
+<div id="recipeText" class="requirement-text">
+
+TEA 100% | MILK 100% | SUGAR 100% | ICE 100%
+
+</div>
+
+</div>
+
+<div class="panel control-panel">
+
+<button class="auto-btn" id="autoButton" onclick="autoMode()">
+
+AUTO MODE
+
+</button>
+
+<br>
+
+<button class="start" onclick="startSystem()">
+
+START
+
+</button>
+
+<button class="stop" onclick="stopSystem()">
+
+STOP
+
+</button>
+
+<button class="reset" onclick="resetSystem()">
+
+RESET
+
+</button>
+
+</div>
+
+<div class="monitor">
+
+<a href="/monitor">
+
+MONITOR SYSTEM
+
+</a>
+
+</div>
+
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+
+<script>
+
+const socket = io();
+
+console.log(socket);
+
+let auto_status = false;
+let run_status = false;
+let fault_status = false;
+
+let teaPercent = "100";
+let milkPercent = "100";
+let sugarPercent = "100";
+let icePercent = "100";
+
+function updateRequirement(){
+
+    document.getElementById("recipeText").innerHTML =
+
+    "TEA " + teaPercent + "% | " +
+
+    "MILK " + milkPercent + "% | " +
+
+    "SUGAR " + sugarPercent + "% | " +
+
+    "ICE " + icePercent + "%";
+
+}
+
+function clearSelection(id50,id100){
+
+    document.getElementById(id50).classList.remove("selected");
+    document.getElementById(id100).classList.remove("selected");
+
+}
+
+function setTea(value){
+
+    socket.emit("setTea", value);
+
+}
+
+function setMilk(value){
+
+    socket.emit("setMilk", value);
+
+}
+
+function setSugar(value){
+
+    socket.emit("setSugar", value);
+
+}
+
+function setIce(value){
+
+    socket.emit("setIce", value);
+
+}
+
+function autoMode(){
+
+    socket.emit("toggleAuto");
+
+}
+
+function startSystem(){
+
+    socket.emit("startSystem");
+
+}
+
+function stopSystem(){
+
+    socket.emit("stopSystem");
+
+}
+
+function resetSystem(){
+
+    socket.emit("resetSystem");
+
+}
+
+socket.on("syncData",(data)=>{
+
+    auto_status = data.autoMode;
+    run_status = data.systemRun;
+    fault_status = data.fault;
+
+    document.getElementById("autoLamp").innerHTML =
+        auto_status ?
+        "🟢 AUTO STATUS" :
+        "⚪ AUTO STATUS";
+
+    document.getElementById("runLamp").innerHTML =
+        run_status ?
+        "🟢 SYSTEM RUN" :
+        "⚪ SYSTEM RUN";
+
+    document.getElementById("faultLamp").innerHTML =
+        fault_status ?
+        "🔴 SYSTEM FAULT" :
+        "⚪ SYSTEM FAULT";
+
+    document.getElementById("autoButton").style.background =
+        auto_status ? "#00ff00" : "white";
+    teaPercent = data.teaPercent;
+milkPercent = data.milkPercent;
+sugarPercent = data.sugarPercent;
+icePercent = data.icePercent;
+
+clearSelection("tea50","tea100");
+document.getElementById("tea"+teaPercent).classList.add("selected");
+
+clearSelection("milk50","milk100");
+document.getElementById("milk"+milkPercent).classList.add("selected");
+
+clearSelection("sugar50","sugar100");
+document.getElementById("sugar"+sugarPercent).classList.add("selected");
+
+clearSelection("ice50","ice100");
+document.getElementById("ice"+icePercent).classList.add("selected");
+
+updateRequirement();
+
+});
+
+updateRequirement();
+
+</script>
+
+</body>
+</html>

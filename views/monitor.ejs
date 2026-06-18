@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>System Monitor</title>
+
+<style>
+
+body{
+    font-family:Arial;
+    background:#d3d3d3;
+    margin:0;
+}
+
+.container{
+    width:1200px;
+    margin:20px auto;
+    background:#efefef;
+    border:2px solid #888;
+}
+
+.header{
+    background:#666;
+    color:white;
+    text-align:center;
+    font-size:32px;
+    font-weight:bold;
+    padding:20px;
+}
+
+.step-box{
+
+    margin:20px;
+
+    border:1px solid #888;
+
+    background:white;
+
+    text-align:center;
+
+    padding:20px;
+
+}
+
+#stepNumber{
+
+    font-size:36px;
+
+    font-weight:bold;
+
+    color:blue;
+
+}
+
+#stepName{
+
+    margin-top:15px;
+
+    font-size:32px;
+
+    font-weight:bold;
+
+    color:green;
+
+}
+
+.loadcell-row{
+
+    display:flex;
+
+    margin:20px;
+
+}
+
+.loadcell{
+
+    flex:1;
+
+    border:1px solid #888;
+
+    background:white;
+
+    margin:5px;
+
+    text-align:center;
+
+    padding:20px;
+
+}
+
+.load-title{
+
+    font-size:24px;
+
+    font-weight:bold;
+
+}
+
+.load-value{
+
+    font-size:42px;
+
+    color:blue;
+
+    margin-top:15px;
+
+}
+
+.sensor-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:10px;
+
+    margin:20px;
+
+}
+
+.sensor{
+
+    border:1px solid #888;
+
+    background:white;
+
+    padding:15px;
+
+    font-size:24px;
+
+    font-weight:bold;
+
+}
+
+.back{
+
+    text-align:center;
+
+    margin:30px;
+
+}
+
+.back a{
+
+    font-size:26px;
+
+    text-decoration:none;
+
+    color:#4b2bbd;
+
+}
+
+.back a:hover{
+
+    color:blue;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+
+SYSTEM MONITOR
+
+</div>
+
+<div class="step-box">
+
+<div id="stepNumber">
+
+STEP 0
+
+</div>
+
+<div id="stepName">
+
+WAIT CUP
+
+</div>
+
+</div>
+
+<div class="loadcell-row">
+
+<div class="loadcell">
+
+<div class="load-title">
+
+LOADCELL 1
+
+</div>
+
+<div class="load-value">
+
+185 g
+
+</div>
+
+</div>
+
+<div class="loadcell">
+
+<div class="load-title">
+
+LOADCELL 2
+
+</div>
+
+<div class="load-value">
+
+75 g
+
+</div>
+
+</div>
+
+</div>
+
+<div class="sensor-grid">
+
+<div class="sensor">🟢 SENSOR CUP</div>
+
+<div class="sensor">🟢 SENSOR LIQUID</div>
+
+<div class="sensor">⚪ SENSOR TOPPING</div>
+
+<div class="sensor">🟢 SENSOR MIX</div>
+
+<div class="sensor">⚪ SENSOR ICE</div>
+
+<div class="sensor">🟢 SENSOR SEAL</div>
+
+<div class="sensor">⚪ SENSOR FINISH</div>
+
+</div>
+
+<div class="back">
+
+<a href="/">
+
+BACK TO DASHBOARD
+
+</a>
+
+</div>
+
+</div>
+
+<script>
+
+let currentStep = 0;
+
+const stepList = [
+
+"WAIT CUP",
+"MOVE TO LIQUID",
+"FILL TEA",
+"FILL MILK",
+"FILL SUGAR",
+"MOVE TOPPING",
+"TOPPING",
+"MOVE MIX",
+"CYL DOWN",
+"MIXING",
+"MOVE TO ICE",
+"FILL ICE",
+"ICE",
+"SEAL",
+"FINISH"
+
+];
+
+function updateStep(){
+
+    document.getElementById("stepNumber").innerHTML =
+    "STEP " + currentStep;
+
+    document.getElementById("stepName").innerHTML =
+    stepList[currentStep];
+
+}
+
+updateStep();
+
+</script>
+
+</body>
+
+</html>
