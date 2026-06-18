@@ -83,43 +83,6 @@ body{
 
 }
 
-.recipe-row{
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin:15px 0;
-
-}
-
-.recipe-name{
-
-    width:150px;
-    font-size:28px;
-    font-weight:bold;
-
-}
-
-.recipe-buttons{
-
-    width:300px;
-    text-align:right;
-
-}
-
-.percent-btn{
-
-    width:120px;
-    height:50px;
-    font-size:20px;
-    font-weight:bold;
-    margin-right:10px;
-    cursor:pointer;
-    border:2px solid black;
-    background:#dddddd;
-
-}
-
 .selected{
 
     background:#00ff00;
@@ -215,26 +178,49 @@ body{
     border:2px solid #999;
 
 }
+.recipe-grid{
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    background:#dfffdc;
+    border:4px solid orange;
+
+}
+
+.recipe-cell{
+
+    text-align:center;
+    border:2px solid orange;
+    padding:20px;
+
+}
+
+.recipe-cell h3{
+
+    margin:0 0 15px 0;
+    font-size:28px;
+    color:#003366;
+
+}
+
+.recipe-btn{
+
+    width:100px;
+    height:50px;
+    font-size:22px;
+    font-weight:bold;
+    margin:5px;
+    cursor:pointer;
+    border:2px solid #999;
+    background:#eeeeee;
+
+}
 
 @media screen and (max-width:768px){
 
     .container{
         width:100%;
         margin:0;
-    }
-
-    .recipe-name{
-        width:100px;
-        font-size:18px;
-    }
-
-    .recipe-buttons{
-        width:auto;
-    }
-
-    .percent-btn{
-        width:90px;
-        height:45px;
     }
 
     .panel-title{
@@ -327,57 +313,61 @@ RECIPE SELECTION
 
 </div>
 
-<div class="recipe-row">
+<div class="recipe-grid">
 
-<div class="recipe-name">TEA</div>
+<div class="recipe-cell">
 
-<div class="recipe-buttons">
+<h3>TEA</h3>
 
-<button id="tea50" class="percent-btn" onclick="setTea('50')">50%</button>
+<button id="tea50"
+class="recipe-btn"
+onclick="setTea('50')">50%</button>
 
-<button id="tea100" class="percent-btn selected" onclick="setTea('100')">100%</button>
-
-</div>
-
-</div>
-
-<div class="recipe-row">
-
-<div class="recipe-name">MILK</div>
-
-<div class="recipe-buttons">
-
-<button id="milk50" class="percent-btn" onclick="setMilk('50')">50%</button>
-
-<button id="milk100" class="percent-btn selected" onclick="setMilk('100')">100%</button>
+<button id="tea100"
+class="recipe-btn selected"
+onclick="setTea('100')">100%</button>
 
 </div>
 
-</div>
+<div class="recipe-cell">
 
-<div class="recipe-row">
+<h3>MILK</h3>
 
-<div class="recipe-name">SUGAR</div>
+<button id="milk50"
+class="recipe-btn"
+onclick="setMilk('50')">50%</button>
 
-<div class="recipe-buttons">
-
-<button id="sugar50" class="percent-btn" onclick="setSugar('50')">50%</button>
-
-<button id="sugar100" class="percent-btn selected" onclick="setSugar('100')">100%</button>
-
-</div>
+<button id="milk100"
+class="recipe-btn selected"
+onclick="setMilk('100')">100%</button>
 
 </div>
 
-<div class="recipe-row">
+<div class="recipe-cell">
 
-<div class="recipe-name">ICE</div>
+<h3>SUGAR</h3>
 
-<div class="recipe-buttons">
+<button id="sugar50"
+class="recipe-btn"
+onclick="setSugar('50')">50%</button>
 
-<button id="ice50" class="percent-btn" onclick="setIce('50')">50%</button>
+<button id="sugar100"
+class="recipe-btn selected"
+onclick="setSugar('100')">100%</button>
 
-<button id="ice100" class="percent-btn selected" onclick="setIce('100')">100%</button>
+</div>
+
+<div class="recipe-cell">
+
+<h3>ICE</h3>
+
+<button id="ice50"
+class="recipe-btn"
+onclick="setIce('50')">50%</button>
+
+<button id="ice100"
+class="recipe-btn selected"
+onclick="setIce('100')">100%</button>
 
 </div>
 
