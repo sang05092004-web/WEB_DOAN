@@ -56,15 +56,27 @@ body{
 }
 
 .run{
-    color:green;
+
+    color:#1b7f2a;
+    border:2px solid #a6d8a8;
+    background:#f3fff3;
+
 }
 
 .fault{
-    color:red;
+
+    color:#d40000;
+    border:2px solid #ffb0b0;
+    background:#fff4f4;
+
 }
 
 .auto{
-    color:blue;
+
+    color:#1d4ed8;
+    border:2px solid #b6c8ff;
+    background:#f4f7ff;
+
 }
 
 .panel{
@@ -193,45 +205,63 @@ body{
 }
 
 .start{
-    width:220px;
 
+    width:220px;
     height:60px;
 
-    font-size:24px;
+    background:#32d74b;
 
+    color:white;
+
+    font-size:24px;
     font-weight:bold;
 
     margin:10px;
 
+    border:none;
+
     border-radius:10px;
+
 }
 
 .stop{
-    width:220px;
 
+    width:220px;
     height:60px;
 
-    font-size:24px;
+    background:#ffc107;
 
+    color:white;
+
+    font-size:24px;
     font-weight:bold;
 
     margin:10px;
 
+    border:none;
+
     border-radius:10px;
+
 }
 
 .reset{
-    width:220px;
 
+    width:220px;
     height:60px;
 
-    font-size:24px;
+    background:#ff3b30;
 
+    color:white;
+
+    font-size:24px;
     font-weight:bold;
 
     margin:10px;
 
+    border:none;
+
     border-radius:10px;
+
 }
 
 .monitor{
@@ -352,19 +382,19 @@ TIME : --:--:--
 
 <div class="status-box run" id="runLamp">
 
-⚪ SYSTEM RUN
+🟢 ⚙️ SYSTEM RUN
 
 </div>
 
 <div class="status-box fault" id="faultLamp">
 
-⚪ SYSTEM FAULT
+🔴 ⚠️ SYSTEM FAULT
 
 </div>
 
 <div class="status-box auto" id="autoLamp">
 
-⚪ AUTO STATUS
+🔵 🤖 AUTO STATUS
 
 </div>
 
@@ -389,8 +419,8 @@ TOTAL PRODUCT
 <div class="product-image">
 
 <img
-src="https://cdn-icons-png.flaticon.com/512/3081/3081559.png"
-width="130">
+src="https://cdn-icons-png.flaticon.com/512/5787/5787016.png"
+width="220">
 
 </div>
 
@@ -402,7 +432,7 @@ width="130">
 
 <div class="panel-title">
 
-RECIPE SELECTION
+📋 RECIPE SELECTION
 
 </div>
 
@@ -472,7 +502,7 @@ onclick="setIce('100')">100%</button>
 
 <div class="panel-title">
 
-REQUIREMENT
+📑 REQUIREMENT
 
 </div>
 
@@ -490,25 +520,24 @@ TEA 100% | MILK 100% | SUGAR 100% | ICE 100%
 
 <button class="auto-btn" id="autoButton" onclick="autoMode()">
 
-AUTO MODE
-
+⚙️ AUTO MODE
 </button>
 
 <button class="start" onclick="startSystem()">
 
-START
+▶ START
 
 </button>
 
 <button class="stop" onclick="stopSystem()">
 
-STOP
+■ STOP
 
 </button>
 
 <button class="reset" onclick="resetSystem()">
 
-RESET
+↻ RESET
 
 </button>
 
@@ -675,19 +704,19 @@ socket.on("syncData",(data)=>{
     fault_status = data.fault;
 
     document.getElementById("autoLamp").innerHTML =
-        auto_status ?
-        "🟢 AUTO STATUS" :
-        "⚪ AUTO STATUS";
+    auto_status ?
+    "🔵 🤖 AUTO STATUS" :
+    "⚪ 🤖 AUTO STATUS";
 
     document.getElementById("runLamp").innerHTML =
-        run_status ?
-        "🟢 SYSTEM RUN" :
-        "⚪ SYSTEM RUN";
+    run_status ?
+    "🟢 ⚙️ SYSTEM RUN" :
+    "⚪ ⚙️ SYSTEM RUN";
 
     document.getElementById("faultLamp").innerHTML =
-        fault_status ?
-        "🔴 SYSTEM FAULT" :
-        "⚪ SYSTEM FAULT";
+    fault_status ?
+    "🔴 ⚠️ SYSTEM FAULT" :
+    "⚪ ⚠️ SYSTEM FAULT";
 
     document.getElementById("autoButton").style.background =
     "#d0d0d0";
