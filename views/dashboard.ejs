@@ -83,9 +83,33 @@ body{
 
 }
 
+.product-area{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:60px;
+
+}
+
+.product-count{
+
+    font-size:50px;
+    font-weight:bold;
+
+}
+
+.product-image{
+
+    font-size:110px;
+
+}
+
 .selected{
 
-    background:#00ff00;
+    background:#00ff00 !important;
+    color:black;
+    border:3px solid #008000;
 
 }
 
@@ -114,6 +138,7 @@ body{
     margin:10px;
     border:2px solid black;
     cursor:pointer;
+    background:#d0d0d0;
 
 }
 
@@ -198,7 +223,7 @@ body{
 .recipe-cell h3{
 
     margin:0 0 15px 0;
-    font-size:28px;
+    font-size:32px;
     color:#003366;
 
 }
@@ -213,6 +238,7 @@ body{
     cursor:pointer;
     border:2px solid #999;
     background:#eeeeee;
+    transition:0.2s;
 
 }
 
@@ -297,9 +323,19 @@ TOTAL PRODUCT
 
 </div>
 
-<div class="total-product">
+<div class="product-area">
+
+<div class="product-count">
 
 <span id="totalProduct">120</span>
+
+</div>
+
+<div class="product-image">
+
+🧋
+
+</div>
 
 </div>
 
@@ -317,7 +353,7 @@ RECIPE SELECTION
 
 <div class="recipe-cell">
 
-<h3>TEA</h3>
+<h3>🫖 TEA</h3>
 
 <button id="tea50"
 class="recipe-btn"
@@ -331,7 +367,7 @@ onclick="setTea('100')">100%</button>
 
 <div class="recipe-cell">
 
-<h3>MILK</h3>
+<h3>🥛 MILK</h3>
 
 <button id="milk50"
 class="recipe-btn"
@@ -345,7 +381,7 @@ onclick="setMilk('100')">100%</button>
 
 <div class="recipe-cell">
 
-<h3>SUGAR</h3>
+<h3>🍬 SUGAR</h3>
 
 <button id="sugar50"
 class="recipe-btn"
@@ -359,7 +395,7 @@ onclick="setSugar('100')">100%</button>
 
 <div class="recipe-cell">
 
-<h3>ICE</h3>
+<h3>🧊 ICE</h3>
 
 <button id="ice50"
 class="recipe-btn"
@@ -597,7 +633,7 @@ socket.on("syncData",(data)=>{
         "⚪ SYSTEM FAULT";
 
     document.getElementById("autoButton").style.background =
-        auto_status ? "#00ff00" : "white";
+    "#d0d0d0";
     teaPercent = data.teaPercent;
 milkPercent = data.milkPercent;
 sugarPercent = data.sugarPercent;
