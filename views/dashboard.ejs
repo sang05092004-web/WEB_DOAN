@@ -443,11 +443,27 @@ function setIce(value){
 
 function autoMode(){
 
+    if(run_status){
+
+        alert("⚠ STOP SYSTEM BEFORE CHANGING MODE");
+
+        return;
+
+    }
+
     socket.emit("toggleAuto");
 
 }
 
 function startSystem(){
+
+    if(!auto_status){
+
+        alert("⚠ PLEASE SELECT AUTO MODE FIRST");
+
+        return;
+
+    }
 
     socket.emit("startSystem");
 
@@ -460,6 +476,14 @@ function stopSystem(){
 }
 
 function resetSystem(){
+
+    if(run_status){
+
+        alert("⚠ STOP SYSTEM BEFORE RESET");
+
+        return;
+
+    }
 
     socket.emit("resetSystem");
 
